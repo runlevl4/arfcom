@@ -32,7 +32,7 @@ func Chili(w http.ResponseWriter, r *http.Request) {
 
 // Fu speaks to our infamous alum.
 func Fu(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set(content, contentJSON)
 	w.WriteHeader(http.StatusOK)
 	t := `{"message": "FU AROCK!"}`
 	fmt.Fprintf(w, t)
@@ -41,7 +41,7 @@ func Fu(w http.ResponseWriter, r *http.Request) {
 
 // Caliber tries to steer the caller to the right pistol choice.
 func Caliber(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set(content, contentJSON)
 	w.WriteHeader(http.StatusInternalServerError)
 	t := `{"error": "divide by zero"}`
 	fmt.Fprintf(w, t)
