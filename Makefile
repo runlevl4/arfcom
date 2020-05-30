@@ -2,9 +2,9 @@ include .env
 
 GOBASE=$(shell pwd)
 MAKEFLAGS += --silent
-TAG="k8sninja/arfcom:$(BUILD_TAG)"
+TAG="runlevl4/arfcom:$(BUILD_TAG)"
 
-build-mac:
+build:
 	echo "***** building mac binary *****"
 	GOOS=darwin GOARCH=amd64 go build -o bin/mac/arfcom api/cmd/main.go
 	echo "***** build complete *****"
