@@ -24,6 +24,8 @@ func run() error {
 	r.HandleFunc("/chili", loggingMiddleware(handler.Chili)).Methods("GET")
 	r.HandleFunc("/fu", loggingMiddleware(handler.Fu)).Methods("GET")
 	r.HandleFunc("/caliber/9mmOr45", loggingMiddleware(handler.Caliber)).Methods("GET")
+	r.HandleFunc("/health", loggingMiddleware(handler.Health)).Methods("GET")
+	r.HandleFunc("/info", loggingMiddleware(handler.Info)).Methods("GET")
 
 	log.Printf("%s : Starting server on port 8000", time.Now().Format(time.RFC3339))
 	log.Fatal(http.ListenAndServe(":8000", r))

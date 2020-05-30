@@ -7,8 +7,24 @@ import (
 	"time"
 )
 
+// GitCommit stores the hash from HEAD.
+var GitCommit string
 const content = "Content-Type"
 const contentJSON = "application/json"
+
+//Health responds if the service is ready to take traffic.
+func Health(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set(content, contentJSON)
+	w.WriteHeader(http.StatusOK)
+	fmt.Fprintf(w, `{"status": "HEALTHY"}`)	
+}
+
+//Info responds if the service is up.
+func Info(w http.ResponseWriter, r *http.Request) {	
+	w.Header().Set(content, contentJSON)
+	w.WriteHeader(http.StatusOK)
+	fmt.Fprintf(w, `{"status": "UP"}`)
+}
 
 // Chili tries to answer the age-old question on Arfcom...beans or no beans.
 func Chili(w http.ResponseWriter, r *http.Request) {
