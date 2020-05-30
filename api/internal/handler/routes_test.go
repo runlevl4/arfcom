@@ -104,3 +104,35 @@ func TestCaliber(t *testing.T) {
 	}
 
 }
+
+func TestInfo(t *testing.T) {
+	rq, err := http.NewRequest("GET", "info", nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	rs := httptest.NewRecorder()
+	handler := http.HandlerFunc(Info)
+
+	handler.ServeHTTP(rs, rq)
+	if status := rs.Code; status != http.StatusOK {
+		t.Errorf("handler returned wrong status code: got %v want %v",
+			status, http.StatusOK)
+	}
+}
+
+func TestHealth(t *testing.T) {
+	rq, err := http.NewRequest("GET", "health", nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	rs := httptest.NewRecorder()
+	handler := http.HandlerFunc(Health)
+
+	handler.ServeHTTP(rs, rq)
+	if status := rs.Code; status != http.StatusOK {
+		t.Errorf("handler returned wrong status code: got %v want %v",
+			status, http.StatusOK)
+	}
+}
