@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: arf-solo
+  name: arf-solo
+spec:
+  containers:
+  - image: runlevl4/arfcom:latest
+    name: app
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Never
+status: {}
