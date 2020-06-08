@@ -1,8 +1,8 @@
 FROM alpine:latest
 
-#USER 1000
+RUN mkdir /app && chown -R 1000:1000 /app
 
-RUN mkdir /app
+USER 1000
 COPY bin/linux/arfcom /app
 
 EXPOSE 8000
